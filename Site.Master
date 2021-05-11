@@ -1,0 +1,301 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="RE_Escritorio.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <!--Personalizados-->
+    <link rel="stylesheet" href="bootstrap/css/Personalizado.CSS" />
+    <link rel="stylesheet" href="bootstrap/css/RE.CSS" />
+    <!-- bootstrap 4.2.1 
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- JQuery 3.3.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!--script src="POPUP/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <!-- bootstrap 4.2.1 -->
+    <!--script src="bootstrap/js/bootstrap.min.js"> </script-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!-- datatables-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    
+    <!-- Font Awesome 4.5.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+       <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Ico Font -->
+    <link rel="stylesheet" href="icofont/icofont.min.css">
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>VC MultiChanel</title>
+    <link rel="shorcut icon" href="dist/img/login/iconoC.png" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+
+        html { visibility:hidden; }
+
+        .circulo {
+             width: 100px;
+             height: 100px;
+             -moz-border-radius: 50%;
+             -webkit-border-radius: 50%;
+             border-radius: 50%;
+             background: #5cb85c;
+             width: 100px; height: 100px; -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; background: #5cb85c;
+             opacity:.5
+        }
+
+        .panelDatos{
+            background-color: #3390EE;
+            width: 65%;
+            text-align:center;
+            height:6em;
+        }
+
+        .txtPanelDatos{
+            margin-top: 20px;
+            height: 38px;
+        }
+
+        .Libre{
+	        color: #fff !important;
+	        background-color: #007bff !important;
+	        border-color: #007bff !important;
+	        border: 1px solid black !important;
+        }
+
+        .OcupadoPorOtro{
+	        color: #fff !important;
+	        background-color: #dc3545 !important;
+	        border-color: #dc3545 !important;
+	        border: 1px solid black !important;
+        }
+
+        .OcupadoPorUsuario{
+	        color: #fff !important;
+	        background-color: #28a745 !important;
+	        border-color: #28a745 !important;
+	        border: 1px solid black !important;
+        }
+
+        .AnuladoPorCercania{
+	        color: #212529 !important;
+	        background-color: #ffc107 !important;
+	        border-color: #ffc107 !important;
+	        border: 1px solid black !important;
+        }
+
+        .Roto{
+	        color: #fff !important;
+	        background-color: #AFAEAD !important;
+	        border-color: #AFAEAD !important;
+	        border: 1px solid black !important;
+        }
+
+    </style>
+    
+</head>
+<body > <%--class="bg-dark"--%>
+    <form id="form1" runat="server">
+        <div class="page-wrapper chiller-theme toggled">
+            <a id="show-sidebar" class="btn btn-sm btn-dark" style="z-index:10000" href="#">
+                <i class="fas fa-bars" ></i>
+            </a>
+            <nav id="sidebar" class="sidebar-wrapper" style="background-color:#3390EE;">
+                <div class="sidebar-content" >
+                    
+                    <div class="sidebar-brand">
+                         
+                         <img src="./dist/img/Master/logo.png" style="height: 50px;" >
+                             <asp:HyperLink ID="HLTenisCanchas" Visible=false runat="server" NavigateUrl="CanchasListar.aspx">
+                                <img src="./dist/img/Tenis.png" style="width: 50px;  " class="circle-photo">
+                             </asp:HyperLink>
+                           
+                             <a href="#"></a>
+                        <div id="close-sidebar" >
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-header colorWhite">
+                        <div class="user-pic">
+                            <img id="imgFoto" src="" runat=server class="img-responsive img-rounded" alt="#!">
+                        </div>
+
+                        <div class="user-info">
+                            <span class="user-name">
+                                <asp:Label CssClass="lblcustom2" ID="lblBienvenida" runat="server" Text="" Font-Bold="true"></asp:Label>
+                            </span>
+                            <asp:Label ID="lblPerfil" runat="server" Text="" class ="user-role" ></asp:Label>
+                            <span class="user-status">
+                                <i class="fa fa-circle"></i>
+                                <span>Online</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-menu colorWhite">
+                        <ul>
+                            <li class="header-menu">
+                                <span>Escritorios</span>
+                            </li>
+
+                             <li class="sidebar-dropdown">
+                                <a href="Reservar.aspx">
+                                    <i class=" far fa-calendar-alt"></i>
+                                    <span>Reservar</span>
+                                </a>
+                            </li>
+                            
+                            <%--<li class="sidebar-dropdown">
+                                <a href="TenisTorneo.aspx">
+                                    <i class=" fa fa-trophy"></i>
+                                        <span>Torneos</span>
+                                </a>
+                            </li>--%>
+                            
+                            <li class="sidebar-dropdown">
+                                <a href="MisReservas.aspx">
+                                    <i class="fa icofont-tennis"></i>
+                                    <span>Mis Reservas</span>
+                                     <asp:Label CssClass="badge badge-pill badge-success notification" ID="lblReservasTenis" runat="server" ></asp:Label>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                     <div id="divAdmin" class="sidebar-menu colorWhite" runat="server" style="display:none;">
+                        <ul>
+                            <li class="header-menu">
+                                <span>Administrar</span>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="MapaGestionar.aspx">
+                                    <i class=" fas fa-futbol"></i>
+                                        <span>Gestionar Mapa</span>
+                                </a>
+                            </li>
+                             
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-menu colorWhite">
+                        <ul>
+                            <li class="header-menu">
+                                <span>Declaracion Jurada</span>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="DDJJ.aspx">
+                                    <i class="fab fa-wpforms"></i>
+                                    <%--<i class=" fas fa-futbol"></i>--%>
+                                        <span>Generar PDF</span>
+                                </a>
+                            </li>
+                             
+                        </ul>
+                    </div>
+
+                    <!-- sidebar-menu  -->
+
+                      <%--<div class="sidebar-menu" style="background-color: white;">
+                        <ul>
+                            <li class="header-menu">
+                                <span>House</span>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="HouseReserva.aspx">
+                                    <i class=" fas fa-calendar"></i>
+                                        <span>Reservar</span>
+                                </a>
+                            </li>
+                             
+                        </ul>
+                    </div>--%>
+                </div>
+                <!-- sidebar-content  -->
+                <div class="sidebar-footer" style="background-color: #3390EE;">
+                    <a target=_blank href="info.pdf">
+                        <i class="fa fa-info iconColor" ></i>
+                    </a>
+
+                    <a href="ModificarUsuario.aspx">
+                        <i class="fa fa-cog iconColor"></i>
+                      <asp:Label CssClass="badge badge-pill badge-warning notification" ID="lblPErfilAlerta" runat="server" >1</asp:Label>
+                    </a>
+                     
+                    <a href="#"   id="btnCerrarSesion"  runat="server" onclick="Cerrar_Sesion()">
+                        <i class="fa fa-power-off iconColor"></i>
+                    </a>
+                </div>
+            </nav>
+            <!-- sidebar-wrapper  -->
+            <div id="idDivPlaceHolder1">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            </div>
+
+    <script>
+
+        $(document).ready(function() {
+            document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+            
+            if ($(".page-wrapper").hasClass("toggled")) {
+                $('#idDivPlaceHolder1').click(function () {
+                    $(".page-wrapper").removeClass("toggled");
+                });
+             }
+        });
+
+
+
+        jQuery(function ($) {
+            $(".page-wrapper").removeClass("toggled");
+            $(".sidebar-dropdown > a").click(function () {
+                
+                $(".sidebar-submenu").slideUp(200);
+                if (
+                    $(this)
+                        .parent()
+                        .hasClass("active")
+                ) {
+                    $(".sidebar-dropdown").removeClass("active");
+                    $(this)
+                        .parent()
+                        .removeClass("active");
+                } else {
+                    $(".sidebar-dropdown").removeClass("active");
+                    $(this)
+                        .next(".sidebar-submenu")
+                        .slideDown(200);
+                    $(this)
+                        .parent()
+                        .addClass("active");
+                }
+            });
+
+            $("#close-sidebar").click(function () {
+                $(".page-wrapper").removeClass("toggled");
+            });
+            $("#show-sidebar").click(function () {
+                $(".page-wrapper").addClass("toggled");
+            });
+
+
+
+        });
+
+    </script>
+    </form>
+</body>
+</html>
