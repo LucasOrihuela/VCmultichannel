@@ -281,6 +281,7 @@
     <Content Include="MapaGestionar.aspx" />
     <Content Include="MisReservas.aspx" />
     <Content Include="ModificarUsuario.aspx" />
+    <Content Include="NuevaReserva.aspx" />
     <Content Include="Reservar.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
