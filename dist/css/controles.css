@@ -1,0 +1,42 @@
+﻿#label {
+    text-decoration: underline solid #000000;
+}
+
+.calendario {
+    background-color: #14B111;
+    font-size: 1.2rem;
+}
+
+.calendario:hover{
+    font-size:1.3rem;
+}
+
+.calendario td{
+    background-color:white;
+    color: black;
+}
+
+.botones {
+    background-color: #14B111;
+    padding: 7px 110px;
+    border-radius: 50px;
+    border: none;
+}
+
+    .botones:hover {
+        color: #14B111;
+        background-color: white;
+        padding: 7px 110px;
+        border-radius: 50px;
+        border: solid black 1px;
+    }
+
+#tituloCabecera {
+    color: #14B111;
+    font-size: 2.5rem;
+}
+
+.separado{
+    max-width:450px;
+}
+

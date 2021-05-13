@@ -139,6 +139,7 @@
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
     <Content Include="dist\css\animate.css" />
+    <Content Include="dist\css\controles.css" />
     <Content Include="dist\css\Inicio.css" />
     <Content Include="dist\css\skins\skin-black-light.css" />
     <Content Include="dist\css\skins\skin-black-light.min.css" />
@@ -212,6 +213,17 @@
     <Content Include="dist\img\escritorios\e8.png" />
     <Content Include="dist\img\escritorios\e9.png" />
     <Content Include="dist\img\escritorios\reuniones.png" />
+    <Content Include="dist\img\escritorio\1.png" />
+    <Content Include="dist\img\escritorio\10.png" />
+    <Content Include="dist\img\escritorio\2.png" />
+    <Content Include="dist\img\escritorio\3.png" />
+    <Content Include="dist\img\escritorio\4.png" />
+    <Content Include="dist\img\escritorio\5.png" />
+    <Content Include="dist\img\escritorio\6.png" />
+    <Content Include="dist\img\escritorio\7.png" />
+    <Content Include="dist\img\escritorio\8.png" />
+    <Content Include="dist\img\escritorio\9.png" />
+    <Content Include="dist\img\escritorio\default.png" />
     <Content Include="dist\img\favicon.ico" />
     <Content Include="dist\img\futbol.png" />
     <Content Include="dist\img\Gear.png" />
@@ -282,6 +294,8 @@
     <Content Include="MisReservas.aspx" />
     <Content Include="ModificarUsuario.aspx" />
     <Content Include="NuevaReserva.aspx" />
+    <Content Include="NuevoMapa.aspx" />
+    <Content Include="Pedidos.aspx" />
     <Content Include="Reservar.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -367,6 +381,7 @@
     </Compile>
     <Compile Include="MapaGestionar.aspx.vb">
       <DependentUpon>MapaGestionar.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="MisReservas.aspx.designer.vb">
       <DependentUpon>MisReservas.aspx</DependentUpon>
@@ -400,6 +415,27 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NuevaReserva.aspx.designer.vb">
+      <DependentUpon>NuevaReserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NuevaReserva.aspx.vb">
+      <DependentUpon>NuevaReserva.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="NuevoMapa.aspx.designer.vb">
+      <DependentUpon>NuevoMapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NuevoMapa.aspx.vb">
+      <DependentUpon>NuevoMapa.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pedidos.aspx.designer.vb">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos.aspx.vb">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Reservar.aspx.designer.vb">
       <DependentUpon>Reservar.aspx</DependentUpon>
@@ -455,6 +491,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="dist\img\nuevomapa\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

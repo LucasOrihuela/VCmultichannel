@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-        <!DOCTYPE html>
+      
 <!-- saved from url=(0039)http://www.sarsy-srl.com/WBO/Login.aspx -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -19,30 +19,36 @@
     <link rel="stylesheet" href="css/blue.css">
     <!--Sweet Alert! -->
     <link rel="stylesheet" href="css/sweetalert2.css">
- 
+    <link rel="stylesheet" href="dist/css/controles.css" type="text/css" />
     <title>
-	WBO
+
 </title><link id="ImgfavIcon" rel="shorcut icon" href=""></head>
  <Style>
 
  </style>
-<body  >
+
     <div class="login-box">
         
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg" style="text-align: center;">DECLARACION JURADA</p>
+            <div  class="mx-auto " style=" border-radius: 5px; padding: 10px; max-width: 450px; height: 110px; background-color:#E6E6E6;"> <%--background-color:#1b1b1b"--%>
+                <div class="row mx-0 pl-0 pr-0">
+                <div class="col" style="margin-top:10px;">
+                    <label class="lblcustom justify-content-lg-center" style="color:#3390EE; font-size:2.5rem;" >Declaracion Jurada</label>
+                </div>
+            </div> 
+        </div>
  
 	<div id="nav-spacer"  ></div>
   
 <div id="div1"> 
-<div>
+<div id="divContenedor" class="mx-auto mt-5 container-fluid" style="color:black; border-radius: 50px; padding: 10px; max-width: 500px; background-color: white; border: 1px solid #3390EE;">
   
             
-               <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-               </div>
-
+          
+              
                 <asp:Panel ID="Panel1" runat="server" visible="true">
+                    <center><progress max="101" value="14.3" style="width:250px;"></progress></center>
                     <div class="text-center" style="text-align:center">
                         <h3> ¿Cuál es tu temperatura corporal? </h3> 
                         <br />
@@ -53,25 +59,27 @@
                         <button type="button" id="btnSumarTemp" class="btn btn-outline-primary" onclick="AumentarTemperatura()">+</button>
                     </div>
                     <div class="container" style="width:40rem;">
-                       <div id="container1" class="separadoArriba" style="text-align:center;" >
-                            <p>Consejos para medir la temperatura</p>
+                       <div id="container1" class="separadoArriba" style="text-align:left;" >
+                            <b><p>Consejos para medir la temperatura: </p></b>
                         </div>
                         <div>
-                            <ul> 
+                            <ul style="max-width:450px;"> 
                                 <li style="margin-bottom:1rem;">Medí la temperatura siempre en el mismo lugar (oido y axila), ya que de otro modo pueden variar los valores.</li>
                                 <li style="margin-bottom:1rem;">No se debe tomar la temperatura despues del baño o de haber realizado una actividad fisica. Esperá por lo menos 20 minutos para hacerlo.</li>
                                 <li>La fiebre hay que medirla, no hay que fiarse de la percepción que se tenga al tocar la frente.</li>
                             </ul>
                         </div>
-                        <div class="separado" style="text-align:center;">
-                            <asp:Button CssClass="separado" ID="btnContinuarPanel1" runat="server" Text="Continuar" />
+                        <div style="text-align:center; max-width:450px;">
+                            <br />
+                            <asp:Button CssClass="botones" ID="btnContinuarPanel1" runat="server" Text="Continuar" />
                         </div>
                     </div>
                         
                 </asp:Panel>
 
                 <asp:Panel ID="Panel2" Visible="false" runat="server">
-                <div id="container2" class="separadoAbajo" style="text-align:center" >
+               <center><progress max="101" value="28.6" style="width:250px;"></progress></center>
+                <div id="container2" class="separadoAbajo" style="text-align:center; max-width:450px" >
                     <p>¿Tenés dolor de garganta?</p>
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="flexRadioDefault1" id="gargantaSI" runat="server" value="SI">
@@ -101,12 +109,14 @@
                       <input class="form-check-input" type="radio" name="flexRadioDefault3" id="cabezaNO" checked runat="server" value="NO">
                       <label class="form-check-label" for="flexRadioDefault" style="width:10px;"> NO </label>
                     </div>
-                    <asp:Button ID="btnContinuarPanel2" CssClass="separadoArriba" runat="server" Text="Continuar" />
+                    <br />
+                    <asp:Button ID="btnContinuarPanel2" CssClass="botones" runat="server" Text="Continuar" />
                 </div>
                 </asp:Panel>
 
 
                 <asp:Panel ID="Panel3" Visible="false" runat="server">
+                    <center><progress max="101" value="42.9" style="width:250px;"></progress></center>
                 <div id="container3" class="separadoAbajo" style="text-align:center" >
                     <p>¿Tenés diarrea?</p>
                     <div class="form-check">
@@ -137,13 +147,15 @@
                       <input class="form-check-input" type="radio" name="flexRadioDefault6" id="muscularNO" checked runat="server" value="NO">
                       <label class="form-check-label" for="flexRadioDefault" style="width:10px;"> NO </label>
                     </div>
-                        <asp:Button ID="btnContinuarPanel3" CssClass="separadoArriba" runat="server" Text="Continuar" />
+                    <br />
+                        <asp:Button ID="btnContinuarPanel3" CssClass="botones" runat="server" Text="Continuar" />
                 </div>
                 </asp:Panel>
 
 
                 <asp:Panel ID="Panel4" Visible="false" runat="server">
-                <div id="container4" class="separadoAbajo" style="text-align:center" >
+                    <center><progress max="101" value="57.2" style="width:250px;"></progress></center>
+                <div id="container4" class="separadoAbajo" style="text-align:center; max-width:450px" >
                     <p>¿Percibiste una pérdida del olfato de manera repentina?</p>
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="flexRadioDefault7" id="olfatoSI" runat="server" value="SI">
@@ -173,13 +185,15 @@
                       <input class="form-check-input" type="radio" name="flexRadioDefault9" id="tosNO" checked runat="server" value="NO">
                       <label class="form-check-label" for="flexRadioDefault" style="width:10px;"> NO </label>
                     </div>
-                    <asp:Button ID="btnContinuarPanel4" CssClass="separadoArriba" runat="server" Text="Continuar" />
+                    <br />
+                    <asp:Button ID="btnContinuarPanel4" CssClass="botones" runat="server" Text="Continuar" />
                 </div>
                 </asp:Panel>
 
                 <asp:Panel ID="Panel5" Visible="false" runat="server">
-                <div id="container5" class="separadoAbajo" style="text-align:center;" >
-                    <div class="form-check">
+                    <center><progress max="101" value="71.5" style="width:250px;"></progress></center>
+                <div id="container5" class="separadoAbajo" style="text-align:center; max-width:450px" >
+                    <div class="form-check" style="text-align:left;">
                         <asp:CheckBox ID="ContactoEstrecho" runat="server" />
                         <label class="form-check-label" for="defaultCheck1">
                             Trabajo o convivo con una persona que actualmente es caso confirmado
@@ -194,13 +208,16 @@
                         <label class="form-check-label" for="defaultCheck3">
                             Tengo/tuve cáncer
                         </label>
+                        <br />
                     </div>
-                    <asp:Button ID="btnContinuarPanel5" CssClass="separadoArriba" runat="server" Text="Continuar" />
+                    <asp:Button ID="btnContinuarPanel5" CssClass="botones" runat="server" Text="Continuar" />
                 </div>
                 </asp:Panel>
 
                 <asp:Panel ID="Panel6" Visible="false" runat="server">
+                    <center><progress max="101" value="85.8" style="width:250px;"></progress></center>
                 <div id="container6" class="separadoAbajo" style="text-align:center;" >
+                    <div style="text-align:left;">
                         <asp:CheckBox ID="Diabetes" runat="server" />
                       <label class="form-check-label" for="defaultCheck4">
                         Tengo diabetes
@@ -216,13 +233,17 @@
                         Tengo enfermedad renal crónica
                       </label>
                      <br />
-                     <asp:Button ID="btnContinuarPanel6" CssClass="separadoArriba" runat="server" Text="Continuar" />
+                    </div>
+                        
+                  
+                     <asp:Button ID="btnContinuarPanel6" CssClass="botones" runat="server" Text="Continuar" />
                 </div>
                 </asp:Panel>
 
                 <asp:Panel ID="Panel7" Visible="false" runat="server">
+                    <center><progress max="101" value="101" style="width:250px;"></progress></center>
                 <div id="container7" class="separadoAbajo" style="text-align:center;" >
-                        <asp:CheckBox ID="EnfermedadRespiratoria" runat="server" />
+                    <div style="text-align:left"> <asp:CheckBox ID="EnfermedadRespiratoria" runat="server" />
                       <label class="form-check-label" for="defaultCheck7">
                         Tengo alguna enfermedad respiratoria
                       </label>
@@ -236,12 +257,15 @@
                       <label class="form-check-label" for="defaultCheck9">
                         Tengo alguna condición que baja las defensas
                       </label> 
-                    <br />
-                    <asp:Button ID="BtnContinuarPanel7" CssClass="separadoArriba" runat="server" Text="Continuar" />
+                    <br /></div>
+                       
+                
+                    <asp:Button ID="BtnContinuarPanel7" CssClass="botones" runat="server" Text="Continuar" />
                 </div>
                 </asp:Panel>
 
              </div>
+
      
         <asp:Label ID="lblMensaje" runat="server" style="color:red;" Text=""></asp:Label> 
 
@@ -281,6 +305,6 @@
     <script src="script/Login.js.descarga"></script>
    
 <div class="swal2-container"><div class="swal2-overlay" tabindex="-1"></div><div class="swal2-modal" style="display: none; margin-top: -299px;" tabindex="-1"><div class="swal2-icon swal2-error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="swal2-icon swal2-question">?</div><div class="swal2-icon swal2-warning">!</div><div class="swal2-icon swal2-info">i</div><div class="swal2-icon swal2-success"><span class="line tip"></span> <span class="line long"></span><div class="placeholder"></div> <div class="fix"></div></div><img class="swal2-image"><h2></h2><div class="swal2-content"></div><input class="swal2-input"><select class="swal2-select"></select><div class="swal2-radio"></div><label for="swal2-checkbox" class="swal2-checkbox"><input type="checkbox" id="swal2-checkbox"></label><textarea class="swal2-textarea"></textarea><div class="swal2-validationerror"></div><hr class="swal2-spacer"><button type="button" class="swal2-confirm">OK</button><button type="button" class="swal2-cancel">Cancel</button>
-    <span class="swal2-close">×</span></div></div></body></html>
+    <span class="swal2-close">×</span></div></div>
 
 </asp:Content>

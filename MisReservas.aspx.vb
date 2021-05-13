@@ -63,7 +63,7 @@ Partial Class MisReservas
             Dim fecha As String = ds.Tables(0).Rows(0).Item(3)
 
             lblDato.Text = idReserva.ToString()
-            lblPregunta.Text = "¿Quiere eliminar la reserva del escritorio N° " + escritorio + " en la fecha"
+            lblPregunta.Text = "¿Quiere eliminar la reserva del lugar N° " + escritorio + " en la fecha"
             lblFecha.Text = fecha + " ?"
             divEmergente(1)
             mostrar(btnYES, True)

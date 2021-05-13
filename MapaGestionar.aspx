@@ -8,13 +8,13 @@
         <p id="demo"></p>
         <div class="row" style="margin-bottom:30px; margin-top:30px;" >
             <div class="col-sm-4">
-                Escritorio  <asp:DropDownList ID="DropDownList1" class="corto" runat="server" DataSourceID="SqlDataSource2" DataTextField="nombre" DataValueField="id"> </asp:DropDownList>
+                Lugar  <asp:DropDownList ID="DropDownList1" class="corto" runat="server" DataSourceID="SqlDataSource2" DataTextField="nombre" DataValueField="id"> </asp:DropDownList>
                 Estado <asp:DropDownList ID="DropDownList2" class="corto" runat="server" DataSourceID="SqlDataSource3" DataTextField="Nombre" DataValueField="id"> </asp:DropDownList>
                      <br><br>
-                Grupo <asp:DropDownList ID="DropDownList3" class="corto" runat="server" DataSourceID="SqlDataSource4" DataTextField="Nombre" DataValueField="id"> </asp:DropDownList>
+                <%--Grupo <asp:DropDownList ID="DropDownList3" class="corto" runat="server" DataSourceID="SqlDataSource4" DataTextField="Nombre" DataValueField="id"> </asp:DropDownList>--%>
                 Foto <asp:DropDownList ID="ddlFoto" class="corto" runat="server" onchange="LoadImg();"></asp:DropDownList>
                 <br />
-                xx<asp:Image ID="Img" runat="server" />xx
+                <asp:Image ID="Img" runat="server" />
 
             </div>
             <div class="col-sm-4">
@@ -23,18 +23,18 @@
             </div>
         </div>
 
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="Select 0 as id, 'No asignar' as nombre union all select  id, convert(varchar(19),id) from [tblRE_Escritorios] order by 1"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="  select id, nombre from [tblRE_EscritoriosEstados] order by 1"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="Select 0 as id, 'No asignar' as nombre union all  select  id, nombre  from [tblRE_EscritoriosGrupos] order by 1"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="SP_RE_Escritorios"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="SP_RE_EscritoriosGrupos"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="Select 0 as id, 'No asignar' as nombre union all select  id, convert(varchar(19),id) from [tblRE_Lugares] order by 1"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="  select id, nombre from [tblRE_LugaresEstados] order by 1"></asp:SqlDataSource>
+        <%--<asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="Select 0 as id, 'No asignar' as nombre union all  select  id, nombre  from [tblRE_LugaresGrupos] order by 1"></asp:SqlDataSource>--%>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="SP_RE_Lugares"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="SP_RE_LugaresGrupos"></asp:SqlDataSource>
 
 
-        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource5">
+       <%-- <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource5">
             <ItemTemplate> 
                 <input type="button"   class='circulo' style='position:absolute; top:<%# Eval("CoordenadaY") %>px; left:<%# Eval("CoordenadaX") %>px;  z-index:1'   value="<%# Eval("ID") %>"  />
             </ItemTemplate>  
-        </asp:Repeater>
+        </asp:Repeater>--%>
 
         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate> 
@@ -46,7 +46,7 @@
         <link href="main.css" rel="stylesheet">
         
         <div id="divPlano">
-            <asp:ImageButton ID="ImageButton1" runat="server"  ImageUrl="dist\img\plano\plano.png" OnClick="ImageButton1_Click" />
+            <asp:ImageButton ID="ImageButton1" runat="server"  ImageUrl="dist\img\plano\plano.png?V=2" OnClick="ImageButton1_Click" />
         </div>
  
         <div class="container" style="padding-top: 1em;">
@@ -61,7 +61,7 @@
 
 
 
-    <center>
+    <%--<center>
     <div id="divCarrusel" style="margin: 5rem 15rem 5rem 15rem; width:40rem;">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -71,13 +71,13 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="./dist/img/escritorios/e1.png" alt="First slide">
+              <img class="d-block w-100" src="./dist/img/Lugares/1.png" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="./dist/img/escritorios/e3.png" alt="Second slide">
+              <img class="d-block w-100" src="./dist/img/Lugares/2.png" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="./dist/img/escritorios/e6.png" alt="Third slide">
+              <img class="d-block w-100" src="./dist/img/Lugares/3.png" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -90,7 +90,7 @@
           </a>
         </div>
     </div>
-    </center>
+    </center>--%>
 
 
 
@@ -113,7 +113,7 @@
 
     function LoadImg() {
         var foto = document.getElementById("ContentPlaceHolder1_ddlFoto");
-        document.getElementById("ContentPlaceHolder1_Img").src = "dist/img/escritorio/" + foto.value;
+        document.getElementById("ContentPlaceHolder1_Img").src = "dist/img/Lugares/" + foto.value;
     }
 
     

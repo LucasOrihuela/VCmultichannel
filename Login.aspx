@@ -31,7 +31,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
     <title>VC Multichanel</title>
-    <link rel="shorcut icon"  href="dist/img/login/iconoC.png" />
+    <link rel="shorcut icon"  href="dist/img/login/icono.png" />
 
 <style>
     .bodyClass{
@@ -85,7 +85,7 @@
             
             <div class="login-logo" style="position:relative; "> <!-- /.login-logo -->
                 <div>
-                    <img src=".\dist\img\login\logo.png" style="width: 6.7em;" />
+                    <img src=".\dist\img\login\logo.png?V=2" style="width: 6.7em;" />
                 </div>
             </div>
 

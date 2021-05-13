@@ -57,28 +57,6 @@ Partial Class Reservar
 
     Protected Sub ImageButton1_Click(ByVal sender As Object, ByVal e As ImageClickEventArgs)
 
-        'Using (SqlConnection connection = New SqlConnection(ConfigurationManager.ConnectionStrings["MudadoraConnectionString"].ConnectionString.ToString()))
-
-        '        String Sql;
-        '        If (DropDownList1.SelectedValue.ToString()!= "0") Then
-        '        Sql = "update tblROEscritorios set idEstado=" + DropDownList2.SelectedValue.ToString() + " , CoordenadaX=" + txtX.Text + ", CoordenadaY=" + txtY.Text + " where id=" + DropDownList1.Text + "; select 1";  
-        '        Else
-        '        Sql = "update tblROEscritoriosGrupos set    CoordenadaX=" + txtX.Text + ", CoordenadaY=" + txtY.Text + " where id=" + DropDownList3.Text + "; select 1";
-
-        '        Using (SqlCommand command = New SqlCommand(sql, connection))
-
-        '            connection.Open();
-        '            Using (SqlDataReader reader = command.ExecuteReader())
-
-        '                While (reader.Read())
-        '                {
-        '                    Response.Redirect("WebForm1.aspx");
-        '                }
-        '            End Using
-
-        '        End Using
-
-        'End Using
 
     End Sub
 
@@ -92,43 +70,54 @@ Partial Class Reservar
         param.Add("Usuario", objSeguridad.ConnGet(cookie("id")))
         param.Add("Fecha", txtFechaDB.Text)
 
-        ds = objDB.ExecuteSP("SP_RE_Escritorios", param)
+        ds = objDB.ExecuteSP("SP_RE_Lugares", param)
 
         Repeater2.DataSource = ds
         Repeater2.DataBind()
     End Sub
 
     Protected Sub generarReserva()
-        Dim cookie = Request.Cookies.Get("session")
-        Dim objSeguridad As New clsSeguridad
-        Dim ds As DataSet
-        Dim objDB As New clsDB
-        Dim param As New Dictionary(Of String, String)
-        Dim fechaDesde As DateTime
-        fechaDesde = Convert.ToDateTime(txtFecha.Text)
-        Dim fechaDesde1 = fechaDesde.AddDays(1)
+        Try
 
-        param.Add("Escritorio", btnValor.Text)
-        param.Add("User", objSeguridad.ConnGet(cookie("user")))
-        param.Add("FechaDesde", fechaDesde.ToString)
-        'param.Add("FechaHasta", (fechaDesde1.ToString  DropDownList0.SelectedValue.ToString))
 
-        ds = objDB.ExecuteSP("SP_RE_Reserva_Generar", param)
+            Dim cookie = Request.Cookies.Get("session")
+            Dim objSeguridad As New clsSeguridad
+            Dim ds As DataSet
+            Dim objDB As New clsDB
+            Dim param As New Dictionary(Of String, String)
+            Dim fechaDesde As DateTime
+            fechaDesde = Convert.ToDateTime(txtFecha.Text)
+            Dim fechaDesde1 = fechaDesde.AddDays(1)
 
-        If ds.Tables(0).Rows(0).Item(0) = "OK" Then
-            lblPregunta.Text = "Escritorio N° " + btnValor.Text + " reservado para la fecha " + fechaDesde.ToString().Remove(9)
-        ElseIf ds.Tables(0).Rows(0).Item(0) = "EROR_RESERVA" Then
-            lblPregunta.Text = "Error al generar la reserva"
-        Else
-            lblPregunta.Text = "ERROR"
-        End If
+            param.Add("Lugar", btnValor.Text)
+            param.Add("User", objSeguridad.ConnGet(cookie("user")))
+            param.Add("FechaDesde", fechaDesde.ToString)
+            param.Add("FechaHasta", fechaDesde1.ToString)
 
-        imgEscritorio.Src = imgURL.Text
+            ds = objDB.ExecuteSP("SP_RE_Reserva_Generar", param)
 
-        mostrar(btnAceptar, True)
-        mostrar(btnYES, False)
-        mostrar(btnNO, False)
-        divEmergente(1)
+            If ds.Tables(0).Rows(0).Item(0) = "OK" Then
+                lblPregunta.Text = ds.Tables(0).Rows(0).Item(1)
+                lblError.Text = ""
+
+            Else
+                lblError.Text = ds.Tables(0).Rows(0).Item(1)
+            End If
+
+            imgLugar.Src = imgURL.Text
+
+            mostrar(btnAceptar, True)
+            mostrar(btnYES, False)
+            mostrar(btnNO, False)
+            divEmergente(1)
+
+        Catch ex As Exception
+            lblError.Text = Err.Description
+            mostrar(btnAceptar, True)
+            mostrar(btnYES, False)
+            mostrar(btnNO, False)
+            divEmergente(1)
+        End Try
     End Sub
 
     Protected Sub mostrar(nombre As Object, bool As Boolean)
@@ -161,7 +150,7 @@ Partial Class Reservar
     End Sub
 
     Protected Sub redirectMisReservas(sender As Object, e As EventArgs)
-        Response.Redirect("MisReservas.aspx")
+        If lblError.Text = "" Then Response.Redirect("MisReservas.aspx")
     End Sub
 
 End Class

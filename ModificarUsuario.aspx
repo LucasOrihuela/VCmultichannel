@@ -1,9 +1,6 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ModificarUsuario.aspx.vb" Inherits="RE_Escritorio.ModificarUsuario" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="ModificarUsuario.aspx.vb" Inherits="RE_Escritorio.ModificarUsuario" MasterPageFile="~/Site.Master" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="Datepicker/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
@@ -53,10 +50,8 @@
         }
 
     </style>
-</head>
-<body class="bg-dark">   
-    <form id="form1" runat="server">
-
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
          <center>
         <div class="login-logo flexbox">
             <div class="col pt-5 ">
@@ -84,66 +79,66 @@
         </div> 
          </center>
 
-        <div id="divContenedor" class="mx-auto mt-5 container-fluid" style="color:white; border-radius: 50px; padding: 10px; max-width: 600px; background-color: #1b1b1b ">
+        <div id="divContenedor" class="mx-auto mt-5 container-fluid" style="color:black; border-radius: 50px; padding: 10px; max-width: 500px; background-color: white; border: 1px solid #3390EE ">
             <br/>
 
             <div class="material input mt-5">
                 <br />
-                <asp:TextBox ID="txtNombre" runat="server" style="color:white;"></asp:TextBox>
+                <asp:TextBox ID="txtNombre" runat="server" style="color:black;"></asp:TextBox>
                 <span class="highlight-bar"></span>
                 <span class="bar">
                     <span class="left"></span>
                     <span class="right"></span>
                 </span>
-                <label>Nombre</label>
+                <label style="color:#3390EE;">Nombre</label>
             </div>
 
             <div class="material input mt-5">
                 <br />
-                <asp:TextBox ID="txtEmail" runat="server" style="color:white;"></asp:TextBox>
+                <asp:TextBox ID="txtEmail" runat="server" style="color:black;"></asp:TextBox>
                 <span class="highlight-bar"></span>
                 <span class="bar">
                     <span class="left"></span>
                     <span class="right"></span>
                 </span>
-                <label>Email</label>
+                <label style="color:#3390EE;">Email</label>
             </div>
 
             <div class="material input">
-                <asp:TextBox ID="txtTelefono" runat="server" style="color:white"></asp:TextBox>
+                <asp:TextBox ID="txtTelefono" runat="server" style="color:#3390EE"></asp:TextBox>
                 <span class="highlight-bar"></span>
                 <span class="bar">
                     <span class="left"></span>
                     <span class="right"></span>
                 </span>
-                <label>Telefono</label>
+                <label style="color:black;">Telefono</label>
             </div>
             
             <div class="material input">
-                <asp:TextBox ID="txtClave" runat="server"   TextMode="Password"  style="color:white"></asp:TextBox>
+                <asp:TextBox ID="txtClave" runat="server"   TextMode="Password"  style="color:black;"></asp:TextBox>
                 <span class="highlight-bar"></span>
                 <span class="bar">
                     <span class="left"></span>
                     <span class="right"></span>
                 </span>
-                <label>Clave</label>
+                <label style="color:#3390EE;">Clave</label>
             </div>
 
             <div class="row justify-content-center mt-5">
                  
-                <asp:Button ID="btnGuardarCambios" runat="server" CssClass="btnCstm" Text="Guardar Cambios" />
+                <asp:Button ID="btnGuardarCambios" runat="server" CssClass="btnCstm" style="background-color:#3390EE" Text="Guardar Cambios" />
             </div>
             <div class="row justify-content-center">
-                <asp:Button ID="btnCancelar" runat="server" CssClass="mt-4 btnCstmcancel " style=" padding: 7px 110px;" Text="Cancelar" />
+                <asp:Button ID="btnCancelar" runat="server" CssClass="mt-4 btnCstmcancel " style=" padding: 7px 110px; background-color:#3390EE" Text="Cancelar" />
             </div>
             
         </div>
         <center>
-            <asp:Label ID="lblError" ForeColor="Yellow" runat="server" CssClass="lblcustom" Text=""></asp:Label>
+            <asp:Label ID="lblError" ForeColor="Yellow" runat="server" CssClass="lblcustom"  Text=""></asp:Label>
             </center>
-    </form>  
+    
 
-</body>
+
 <script>
     var materialFramework = {}
 
@@ -399,5 +394,4 @@
         });
     });
     </script>
-
-</html>
+    </asp:Content>

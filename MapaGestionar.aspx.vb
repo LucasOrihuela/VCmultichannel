@@ -24,20 +24,21 @@ Partial Class MapaGestionar
 
             Dim Sql As String
             If (DropDownList1.SelectedValue.ToString() <> "0") Then
-                Sql = "update tblRE_Escritorios set idEstado=" + DropDownList2.SelectedValue.ToString() + " , CoordenadaX=" + txtX.Text + ", CoordenadaY=" + txtY.Text + " where id=" + DropDownList1.Text + "; select 1"
-            Else
-                Sql = "update tblRE_EscritoriosGrupos set    CoordenadaX=" + txtX.Text + ", CoordenadaY=" + txtY.Text + " where id=" + DropDownList3.Text + "; select 1"
-            End If
-            Using command As New SqlCommand(Sql, connection)
-                connection.Open()
-                Using reader As SqlDataReader = command.ExecuteReader()
-                    While (reader.Read())
-                        Response.Redirect("WebForm1.aspx")
-                    End While
+                Sql = "update tblRE_Lugares set idEstado=" + DropDownList2.SelectedValue.ToString() + " , CoordenadaX=" + txtX.Text + ", CoordenadaY=" + txtY.Text + " where id=" + DropDownList1.Text + "; select 1"
+                'Else
+                '    Sql = "update tblRE_LugaresGrupos set    CoordenadaX=" + txtX.Text + ", CoordenadaY=" + txtY.Text + " where id=" + DropDownList3.Text + "; select 1"
+                Using command As New SqlCommand(Sql, connection)
+                    connection.Open()
+                    Using reader As SqlDataReader = command.ExecuteReader()
+
+                        If (reader.Read()) Then
+                            Response.Redirect("MapaGestionar.aspx")
+                        End If
+                    End Using
+
                 End Using
 
-            End Using
-
+            End If
         End Using
 
     End Sub
@@ -47,11 +48,11 @@ Partial Class MapaGestionar
     Function fnCargar() As Boolean
 
         Dim lista As New List(Of String)
-        Dim myFilePath As String = Server.MapPath(".\dist\img\escritorio\")
+        Dim myFilePath As String = Server.MapPath(".\dist\img\Lugares\")
         Dim files() As String = IO.Directory.GetFiles(myFilePath)
 
         For Each file As String In files
-            'lista.Add(".\dist\img\escritorio\" & ddlFoto.SelectedValue & "\" + Dir(file))
+
             ddlFoto.Items.Add(Dir(file))
 
         Next

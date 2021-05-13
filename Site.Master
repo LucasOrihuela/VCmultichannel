@@ -8,11 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
     <!--Personalizados-->
-    <link rel="stylesheet" href="bootstrap/css/Personalizado.CSS" />
-    <link rel="stylesheet" href="bootstrap/css/RE.CSS" />
+    <link rel="stylesheet" href="bootstrap/css/Personalizado.CSS?V=2" />
+    <link rel="stylesheet" href="bootstrap/css/RE.CSS?V=2" />
+    <link rel="stylesheet" href="dist/css/controles.css?V=2" type="text/css" />
     <!-- bootstrap 4.2.1 
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css?V=2" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- JQuery 3.3.1 -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!--script src="POPUP/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script-->
@@ -21,21 +22,21 @@
     <!--script src="bootstrap/js/bootstrap.min.js"> </script-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <!-- datatables-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css?V=2" />
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js?V=2"></script>
 
     
     <!-- Font Awesome 4.5.0 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css?V=2" />
 
-       <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+       <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css?V=2" rel="stylesheet">
     <!-- Ico Font -->
     <link rel="stylesheet" href="icofont/icofont.min.css">
 
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>VC MultiChanel</title>
+    <title>Hospital Hussein</title>
     <link rel="shorcut icon" href="dist/img/login/iconoC.png" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -110,7 +111,7 @@
             <a id="show-sidebar" class="btn btn-sm btn-dark" style="z-index:10000" href="#">
                 <i class="fas fa-bars" ></i>
             </a>
-            <nav id="sidebar" class="sidebar-wrapper" style="background-color:#3390EE;">
+            <nav id="sidebar" class="sidebar-wrapper">
                 <div class="sidebar-content" >
                     
                     <div class="sidebar-brand">
@@ -149,25 +150,31 @@
                                 <span>Escritorios</span>
                             </li>
 
-                             <li class="sidebar-dropdown">
-                                <a href="Reservar.aspx">
-                                    <i class=" far fa-calendar-alt"></i>
-                                    <span>Reservar</span>
-                                </a>
-                            </li>
+                          
                             
-                            <%--<li class="sidebar-dropdown">
-                                <a href="TenisTorneo.aspx">
-                                    <i class=" fa fa-trophy"></i>
-                                        <span>Torneos</span>
-                                </a>
-                            </li>--%>
+                           
                             
                             <li class="sidebar-dropdown">
                                 <a href="MisReservas.aspx">
                                     <i class="fa icofont-tennis"></i>
                                     <span>Mis Reservas</span>
                                      <asp:Label CssClass="badge badge-pill badge-success notification" ID="lblReservasTenis" runat="server" ></asp:Label>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-dropdown">
+                                <a href="Pedidos.aspx">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <%--<i class=" fas fa-futbol"></i>--%>
+                                        <span>Nuevo pedido</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-dropdown">
+                                <a href="NuevaReserva.aspx">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <%--<i class=" fas fa-futbol"></i>--%>
+                                        <span>Nueva reserva</span>
                                 </a>
                             </li>
                         </ul>
@@ -204,6 +211,7 @@
                         </ul>
                     </div>
 
+                   
                     <!-- sidebar-menu  -->
 
                       <%--<div class="sidebar-menu" style="background-color: white;">
@@ -222,7 +230,7 @@
                     </div>--%>
                 </div>
                 <!-- sidebar-content  -->
-                <div class="sidebar-footer" style="background-color: #3390EE;">
+                <div class="sidebar-footer">
                     <a target=_blank href="info.pdf">
                         <i class="fa fa-info iconColor" ></i>
                     </a>

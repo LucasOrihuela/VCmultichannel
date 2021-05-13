@@ -7,16 +7,16 @@
         
     <center>
          
-        <div  class="mx-auto " style=" border-radius: 5px; padding: 10px; max-width: 700px; height: 150px; background-color:#E6E6E6;"> <%--background-color:#1b1b1b"--%>
+        <div  class="mx-auto " style=" border-radius: 5px; padding: 10px; max-width: 450px; height: 110px; background-color:#E6E6E6;"> <%--background-color:#1b1b1b"--%>
                 <div class="row mx-0 pl-0 pr-0">
                 <div class="col" style="margin-top:10px;">
-                    <label class=" lblcustom justify-content-lg-center" style="color:#3390EE; font-size:3rem;" >Mis Reservas</label>
+                    <label class="lblcustom justify-content-lg-center" style="color:#14B111; font-size:2.5rem;" >Mis Reservas</label>
                 </div>
             </div> 
         </div>
          
         <asp:PlaceHolder ID="plMensaje" runat="server" Visible="false">
-            <div id="divMensaje" runat="server" class="container" style="background-color:#3390EE; margin-top:15px;">
+            <div id="divMensaje" runat="server" class="container" style="background-color:#14B111; margin-top:15px;">
                 <div class="alert alert alert-dismissible" style="width:100%; text-align:center">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <h4><i id="iconoError" runat="server" class="icon fa fa-ban"></i><asp:Label ID="lblTituloMensaje" runat="server"></asp:Label></h4>
@@ -29,20 +29,22 @@
             <div class="container-fluid">
             <table id="mostrarReservas" class="table-responsive table-borderedsaf mb-5" style="display: inline-table;margin-top:3em;">
                 <thead>
-                    <tr class="table table-borderedsaf " style="color: black; font-size: 2rem; table-layout:fixed;"> <%--background-color: #676767;--%>
-                        <th style=" background-color: #6BBEFF; ">ID Reserva</th>
-                        <th style=" background-color: #6BBEFF; ">Escritorio N° </th>
-                        <th style=" background-color: #6BBEFF; ">Fecha </th>
-                        <th style="width: 1rem; background-color: #6BBEFF; ">Acciones </th>
+                    <tr class="table table-borderedsaf" style="color: black; font-size: 1rem; table-layout: fixed "> <%--background-color: #676767;--%>
+                        <th class="ColorColumnas">ID Reserva</th>
+                        <th class="ColorColumnas">Lugar N° </th>
+                        <th class="ColorColumnas">Imagen</th>
+                        <th class="ColorColumnas">Fecha Desde </th>                        
+                        <th class="ColorColumnas" style="width: 1rem;">Acciones </th>
                     </tr>
                 </thead>
                 <asp:Repeater runat="server" ID="Escritorios" > <%--OnItemCommand="projects_ItemCommand"--%>
                     <ItemTemplate>
-                        <tr class="table table-borderedsaf " style="color:black !important; background-color: white; font-size: 22px;"> <%--background-color: #121212;--%>
+                        <tr class="table table-borderedsaf " style="color:black !important; background-color: white; font-size: 18px;"> <%--background-color: #121212;--%>
                             <td class="bordesTD" > <label class="  "><%#Eval("idReserva") %></label> </td>
-                            <td class="bordesTD" > <label class="  "><%#Eval("idEscritorio") %></label> </td>
+                            <td class="bordesTD" > <label class="  "><%#Eval("idLugar") %></label> </td>
+                            <td class="bordesTD" > <img src="dist/img/Lugares/<%#Eval("Foto")%>.png" style="width:70%; max-width:200px;" alt="ImagenLugar" ></td>
                             <td class="bordesTD" > <label class="  "><%#Eval("FechaHoraDesde") %></label> </td>
-                            <td class="bordesTD" >
+                            <td >
                                 <asp:LinkButton ID="btnDelete" Style="margin:2px !important; background-color: #A0A0A0;" ClientIDMode="AutoID" CssClass="btn btn-xs" runat="server" CommandName="Delete" CommandArgument='<%#Eval("idReserva")%>' ToolTip="Cancelar reserva" ><span class="fa fa-close"></span></asp:LinkButton>
                             </td>
                         </tr>
@@ -122,7 +124,7 @@
     <script type="text/javascript">
 
         function Fundamentales() {
-            setBtnDeleteConfirm("¿Estás seguro de querer borrar esta Juego?");
+            setBtnDeleteConfirm("¿Estás seguro de querer borrar esta Reserva?");
         }
 
         $(function () {

@@ -12,7 +12,7 @@
 .lblcustom {
     font-family: monospace, monospace;
     font-size: 1.5rem;
-    /*color:aquamarine;*/
+    /*color: #14B111;*/
     /*color: white !important;*/
     font-weight: bold;
 }
@@ -20,7 +20,7 @@
 .lblcustomTbl {
     font-family: monospace, monospace;
     font-size: 1.3rem;
-    /*color:aquamarine;*/
+    /*color:#14B111;*/
     color: white !important;
     font-weight: bold;
     text-decoration: none !important;
@@ -30,7 +30,7 @@
     .lblcustomTbl > a {
         font-family: monospace, monospace;
         font-size: 1.3rem;
-        /*color:aquamarine;*/
+        /*color:#14B111;*/
         color: white !important;
         font-weight: bold;
         text-decoration: none !important;
@@ -49,7 +49,7 @@
 lblcustom2 {
     font-family: monospace, monospace;
     font-size: 2rem;
-    /*color:aquamarine;*/
+    /*color:#14B111;*/
     color: inherit;
     font-weight: bold;
 }
@@ -711,6 +711,7 @@ body {
     top: 0;
     left: -300px;
     z-index: 999;
+    background-color: #14B111;
 }
 
     .sidebar-wrapper ul {
@@ -911,6 +912,7 @@ body {
     width: 100%;
     bottom: 0;
     display: flex;
+    background-color: #14B111;
 }
 
     .sidebar-footer > a {
@@ -1088,3 +1090,8 @@ body {
         border-right: none;
     }
     
+.TextPedidos{
+	color:#000000;
+	font-size: 1.5rem;
+	text-decoration:underline solid #14B111;
+}

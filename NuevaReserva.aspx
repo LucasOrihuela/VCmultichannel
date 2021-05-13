@@ -1,10 +1,8 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Reservar.aspx.vb" Inherits="RE_Escritorio.Reservar" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="NuevaReserva.aspx.vb" Inherits="RE_Escritorio.NuevaReserva" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        
-        <div  class="mx-auto " style=" border-radius: 5px; padding: 10px; max-width: 450px; height: 140px; background-color: #3390EE; "> <%--background-color:#1b1b1b;--%>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div  class="mx-auto " style=" border-radius: 5px; padding: 10px; max-width: 450px; height: 140px; background-color: #c2081b; "> <%--background-color:#1b1b1b;--%>
             <div class="row mx-0 pl-0 pr-0" >
                 <div class="col d-flex justify-content-end" >
                     <a href="#" id="Button1" runat="server"  ><span   class="fa fa-caret-left mt-4 ml-4" style="color:white; font-size: 60px"></span></a> <%--color:#54dbb3;--%>
@@ -12,10 +10,11 @@
 
                 <div class="col">
                     <div>
-                        &nbsp;<asp:TextBox ID="txtFecha" runat="server"  ReadOnly=true CssClass=" form-control form-rounded" Style=" background-color:white;  width:150px; font-weight: bold; height: 55px; font-size: 1.1rem; color:#3390EE; "></asp:TextBox> <%--color:#54dbb3;--%>
+                        &nbsp;<asp:TextBox ID="txtFecha" runat="server"  ReadOnly=true CssClass=" form-control form-rounded" Style=" background-color:white;  width:150px; font-weight: bold; height: 55px; font-size: 1.1rem; color:#c2081b; "></asp:TextBox> <%--color:#54dbb3;--%>
                         <br />
-                        &nbsp;<asp:DropDownList ID="DropDownList0" runat="server" DataSourceID="SqlDataSource6" DataTextField="Descripcion" DataValueField="hora"> </asp:DropDownList>
-                              <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="SP_RE_Reserva_Listar"></asp:SqlDataSource>
+                       &nbsp;<asp:DropDownList ID="ddlTurno" AutoPostBack="true" runat="server"   DataTextField="Descripcion" DataValueField="hora" class=" form-control form-rounded" style="margin-left:-18px;margin-top:-40px;background-color:white;  width:180px; font-weight: bold; height: 38px; font-size: 1.1rem; color:#c2081b"> </asp:DropDownList>
+                             
+                       
                     </div>
                 </div>
 
@@ -28,52 +27,30 @@
     <asp:TextBox ID="txtFechaDB" runat="server"   Style=" display:none"></asp:TextBox>
 
 <div id="mapaCompleto" >
-    <div onmousemove="showCoords(event)" onmouseout="clearCoor()" >
-        <div style="display: none">
-            <p id="demo"></p>
-            Escritorio  <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="nombre" DataValueField="id"> </asp:DropDownList>
-            Estado <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="Nombre" DataValueField="id"> </asp:DropDownList>
-                 <br><br>
-            Grupo <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource4" DataTextField="Nombre" DataValueField="id"> </asp:DropDownList>
-
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="Select 0 as id, 'No asignar' as nombre union all select  id, convert(varchar(19),id) from [tblRE_Escritorios] order by 1"></asp:SqlDataSource>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="  select id, nombre from [tblRE_EscritoriosEstados] order by 1"></asp:SqlDataSource>
-            <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="Select 0 as id, 'No asignar' as nombre union all  select  id, nombre  from [tblRE_EscritoriosGrupos] order by 1"></asp:SqlDataSource>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand=""></asp:SqlDataSource>
-            <br><br>
-            X <asp:TextBox ID="txtX" runat="server"></asp:TextBox>  <br>
-            Y <asp:TextBox ID="txtY" runat="server"></asp:TextBox> <br>
-        </div>
-
-        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:RE %>" SelectCommand="SP_RE_EscritoriosGrupos"></asp:SqlDataSource>
-
+   
         <div id="botones" style="z-index:3;">
-            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource5">
-                <ItemTemplate> 
-                    <input type="button" class='circulo' style='position:absolute; top:<%# Eval("CoordenadaY") %>px; left:<%# Eval("CoordenadaX") %>px;  z-index:1'   value="<%# Eval("ID")  %>"  />
-                </ItemTemplate>  
-            </asp:Repeater>
+      
 
             <asp:Repeater ID="Repeater2" runat="server" DataSourceID="">
-                <ItemTemplate>                    
-                    <input type="button" class='btn <%# Eval("Estado") %>' data-estadodesc='<%# Eval("EstadoDesc") %>' data-tipodesc='<%# Eval("TipoDesc") %>' style='position: absolute; top: <%# Eval("CoordenadaY") %>px; left: <%# Eval("CoordenadaX") %>px; width: 50px; z-index: 2' value="<%#Eval("Nombre") & Eval("ID") %>" onclick="getValue(this.value, this.getAttribute('class'), this.getAttribute('data-TipoDesc'), this.getAttribute('data-EstadoDesc'), <%# Eval("Foto") %>);" />
+                <ItemTemplate> 
+                    <input type="button" class='btn <%# Eval("Estado") %>' data-EstadoDesc='<%# Eval("EstadoDesc") %>' data-TipoDesc='<%# Eval("TipoDesc") %>' data-Nombre='<%# Eval("Nombre") %>' data-Numero='<%# Eval("Numero") %>'  style='position:absolute; top:<%# Eval("CoordenadaY") %>px; left:<%# Eval("CoordenadaX") %>px; width:35px; z-index:2' value="<%# Eval("Numero") %>" onClick="getValue(<%# Eval("ID") %>, this.getAttribute('class'), this.getAttribute('data-TipoDesc'), this.getAttribute('data-EstadoDesc'), this.getAttribute('data-Nombre'), this.getAttribute('data-Numero'),<%# Eval("Foto") %>);" />
                 </ItemTemplate>  
             </asp:Repeater>
         </div>
         <link href="bootstrap.min.css" rel="stylesheet">
         <link href="main.css" rel="stylesheet">
         <div id="divPlano">
-            <asp:ImageButton ID="ImageButton1" runat="server"  ImageUrl="dist\img\Mapa\mapa.png" OnClick="ImageButton1_Click" />
+            <asp:ImageButton ID="ImageButton1" runat="server"  ImageUrl="dist\img\plano\plano.png?V=4" OnClick="ImageButton1_Click" />
         </div>
 
         <div class="container" style="padding-top: 1em;">
-            <button type="button" class="btn btn-default">Normal</button>
+ 
             <button type="button" class="btn OcupadoPorUsuario">Mi Reserva</button>
             <button type="button" class="btn Libre">Disponible</button>
             <button type="button" class="btn OcupadoPorOtro">Ocupado</button>
             <button type="button" class="btn AnuladoPorCercania">Advertencia</button>
             <button type="button" class="btn Roto">En reparación</button>
-            <button type="button" class="btn btn-link">Enlace</button>
+ 
         </div>
     </div>
 </div>
@@ -81,11 +58,12 @@
     <div id="divOverlay" runat="server" class="overlay" style="display:none;">
         <div id="divPopUP" class="popup" runat="server" style="display:none;" >
             <div id="pregunta" style="text-align:center; margin-top:1rem; margin-bottom:1rem;">
-                <asp:Label id="lblPregunta" Text="Desea generar la reserva?" runat="server" /> <br />
-                <asp:Label id="lblTipo" Text="Tipo de escritorio: Escritorio" runat="server" style="font-size: 1.5rem;" />
+                  <asp:Label id="lblError"   ForeColor="red" Text="" runat="server" />  
+                <asp:Label id="lblPregunta" Text="" runat="server" /> <br />
+                <asp:Label id="lblTipo" Text="Tipo de Lugar: Lugar" runat="server" style="font-size: 1.5rem;" />
             </div>
             <div id="divImagen" style="width: 25em; margin:auto auto auto auto; text-align:center;" runat="server">
-                <img id="imgEscritorio" src="./dist/img/escritorios/default.png" class="imgDiv" runat="server" alt="Imagen no disponible" />
+                <img id="imgLugar" src="./dist/img/Lugares/default.png" class="imgDiv"  style=" width: 500px"  runat="server" alt="Imagen no disponible" />
             </div>
             <div class="divBotones" style="margin-top: 1rem; margin-bottom: 0.5rem;">
                 <asp:Button ID="btnYES" runat="server" Text="Reservar" CssClass="btn btn-success" onClick="generarReserva" />
@@ -103,13 +81,13 @@
 
 <script>
 
-    function getValue(valor, clase, tipoDesc, estadoDesc,Foto) {
+    function getValue(valor, clase, tipoDesc, estadoDesc, Nombre, Numero, foto) {
         var val = valor.toString();
         var prefijo = "ContentPlaceHolder1_";
         document.getElementById(prefijo + "btnValor").value = val;
-
+        document.getElementById(prefijo + "lblError").innerHTML = "";
         if (estadoDesc == 'Libre') {
-            document.getElementById(prefijo + "lblPregunta").innerHTML = 'Reservar escritorio N° ' + val + ' ?';
+            document.getElementById(prefijo + "lblPregunta").innerHTML = 'Reservar lugar N° ' + Numero + ' en el horario:' + document.getElementById(prefijo + "ddlTurno").value  + ' ?';
             document.getElementById(prefijo + "btnYES").style.removeProperty('display');
             document.getElementById(prefijo + "btnNO").style.removeProperty('display');
             document.getElementById(prefijo + "btnAceptarOcupado").style.display = "none";
@@ -122,14 +100,15 @@
         }
         //document.getElementById(prefijo + "btnValor").classList.add(clase);
 
-        document.getElementById(prefijo + "lblTipo").innerHTML = 'Tipo: ' + tipoDesc;
+        document.getElementById(prefijo + "lblTipo").innerHTML = 'Fila: ' + Nombre;
 
-        document.getElementById(prefijo + "imgEscritorio").src = "./dist/img/escritorio/ " + Foto + ".png ? version = 2";
-        document.getElementById(prefijo + "imgURL").value = "./dist/img/escritorio/" + Foto + ".png?version=2";
+        document.getElementById(prefijo + "imgLugar").src = "./dist/img/Lugares/" + foto + ".png?version=1";
+        document.getElementById(prefijo + "imgURL").value = "./dist/img/Lugares/" + foto + ".png?version=1";
 
         document.getElementById(prefijo + "divOverlay").style.removeProperty('display');
         document.getElementById(prefijo + "divPopUP").style.removeProperty('display');;
     }
+
         
 
     function showCoords(event) {
@@ -209,5 +188,4 @@
     var table = $('#example').DataTable();
 
 </script>
-
 </asp:Content>
